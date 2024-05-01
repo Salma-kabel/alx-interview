@@ -3,6 +3,7 @@
 
 
 def pascal_triangle(n):
+    """implementation of pascal's triangle"""
     arr = []
     for i in range(0, n):
         arr2 = []
