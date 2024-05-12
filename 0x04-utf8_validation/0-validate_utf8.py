@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""method that determines if a given data set represents a valid UTF-8 encoding."""
+"""method that determines if a given data set
+represents a valid UTF-8 encoding."""
 
 
 def validUTF8(data):
@@ -8,14 +9,17 @@ def validUTF8(data):
     t = 1
     while i < len(data):
         if (data[i] & 0xf0) == 0xf0:
-            if i + 1 < len(data) and i + 2 < len(data) and i + 3 < len(data) and (data[i + 1] & 0x80) == 0x80 and (data[i + 2] & 0x80) == 0x80 and (data[i + 3] & 0x80) == 0x80:
+            if i + 1 < len(data) and i + 2 < len(data) and i + 3 < len(data)
+            and (data[i + 1] & 0x80) == 0x80 and (data[i + 2] & 0x80) == 0x80
+            and (data[i + 3] & 0x80) == 0x80:
                 t = 1
                 i += 4
             else:
                 t = 0
                 break
         elif (data[i] & 0xe0) == 0xe0:
-            if i + 1 < len(data) and i + 2 < len(data) and (data[i + 1] & 0x80) == 0x80 and (data[i + 2] & 0x80) == 0x80:
+            if i + 1 < len(data) and i + 2 < len(data) and
+            (data[i + 1] & 0x80) == 0x80 and (data[i + 2] & 0x80) == 0x80:
                 t = 1
                 i += 3
             else:
@@ -38,4 +42,3 @@ def validUTF8(data):
         return True
     else:
         return False
-
