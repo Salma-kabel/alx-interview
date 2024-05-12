@@ -5,7 +5,7 @@
 def validUTF8(data):
     """True if data is a valid UTF-8 encoding, else return False"""
     i = 0
-    t = 0
+    t = 1
     while i < len(data):
         if (data[i] & 0xf0) == 0xf0:
             i += 3
