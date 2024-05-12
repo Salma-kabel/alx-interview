@@ -7,7 +7,10 @@ def validUTF8(data):
     i = 0
     t = 1
     while i < len(data) - 1:
-        if (data[i] & 0xf0) == 0xf0:
+        if data[i] > 255:
+            t = 0
+            break
+        elif (data[i] & 0xf0) == 0xf0:
             if (data[i + 1] & 0x80) == 0x80 and (data[i + 2] & 0x80) == 0x80 and (data[i + 3] & 0x80 == 0x80):
                 t = 1
                 i += 3
