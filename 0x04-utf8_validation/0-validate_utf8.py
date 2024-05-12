@@ -6,28 +6,25 @@ def validUTF8(data):
     """True if data is a valid UTF-8 encoding, else return False"""
     i = 0
     t = 1
-    while i < len(data) - 1:
-        if data[i] > 255:
-            t = 1
-            break
-        elif (data[i] & 0xf0) == 0xf0:
+    while i < len(data):
+        if (data[i] & 0xf0) == 0xf0:
             if (data[i + 1] & 0x80) == 0x80 and (data[i + 2] & 0x80) == 0x80 and (data[i + 3] & 0x80 == 0x80):
                 t = 1
-                i += 3
+                i += 4
             else:
                 t = 0
                 break
         elif (data[i] & 0xe0) == 0xe0:
             if (data[i + 1] & 0x80) == 0x80 and (data[i + 2] & 0x80) == 0x80:
                 t = 1
-                i += 2
+                i += 3
             else:
                 t = 0
                 break
         elif (data[i] & 0xc0) == 0xc0:
             if (data[i + 1] & 0x80) == 0x80:
                 t = 1
-                i += 1
+                i += 2
             else:
                 t = 0
                 break
