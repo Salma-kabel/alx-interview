@@ -10,7 +10,7 @@ def validUTF8(data):
     while i < len(data):
         if (data[i] & 0xf0) == 0xf0:
             if i + 1 < len(data) and i + 2 < len(data) and i + 3 < len(data)\
-               and (data[i + 1] & 0x80) == 0x80 and (data[i + 2] & 0x80) ==\
+               and (data[i + 1] & 0xc0) == 0x80 and (data[i + 2] & 0xc0) ==\
                0x80 and (data[i + 3] & 0x80) == 0x80:
                 t = 1
                 i += 4
@@ -19,14 +19,14 @@ def validUTF8(data):
                 break
         elif (data[i] & 0xe0) == 0xe0:
             if i + 1 < len(data) and i + 2 < len(data) and\
-               (data[i + 1] & 0x80) == 0x80 and (data[i + 2] & 0x80) == 0x80:
+               (data[i + 1] & 0xc0) == 0x80 and (data[i + 2] & 0xc0) == 0x80:
                 t = 1
                 i += 3
             else:
                 t = 0
                 break
         elif (data[i] & 0xc0) == 0xc0:
-            if i + 1 < len(data) and (data[i + 1] & 0x80) == 0x80:
+            if i + 1 < len(data) and (data[i + 1] & 0xc0) == 0x80:
                 t = 1
                 i += 2
             else:
