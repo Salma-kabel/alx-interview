@@ -10,7 +10,9 @@ def main():
     if len(argv) != 2:
         print('Usage: nqueens N')
         exit(1)
-    if type(int(argv[1])) is not int:
+    try:
+        num = int(argv[1])
+    except ValueError:
         print('N must be a number')
         exit(1)
     if int(argv[1]) < 4:
