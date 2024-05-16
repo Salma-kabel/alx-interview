@@ -6,6 +6,7 @@ from sys import argv
 
 
 def main():
+    """solves n queen problem"""
     if len(argv) != 2:
         print('Usage: nqueens N')
         exit(1)
