@@ -19,60 +19,59 @@ def main():
         print('N must be at least 4')
         exit(1)
     arr = []
-    for i in range(int(argv[1])):
-        arr1 = []
-        m = -2
-        j = 0
-        while j < int(argv[1]):
-            m += 1
-            flag = True
-            if j == 0:
-                arr1.append([0, i])
-            else:
-                k = m
-                cl = j
-                while k > 0 and cl > 0:
-                    for w in range(len(arr1)):
-                        if arr1[w][0] == cl - 1 and arr1[w][1] == k - 1:
-                            flag = False
-                    if not flag:
-                        break
-                    k -= 1
-                    cl -= 1
-                k = m
-                cl = j
-                while cl > 0 and k < int(argv[1]):
-                    for w in range(len(arr1)):
-                        if arr1[w][0] == cl - 1 and arr1[w][1] == k + 1:
-                            flag = False
-                    if not flag:
-                        break
-                    k += 1
-                    cl -= 1
-                k = m
-                cl = j
-                while cl > 0:
-                    for w in range(len(arr1)):
-                        if arr1[w][0] == cl - 1 and arr1[w][1] == m:
-                            flag = False
-                    if not flag:
-                        break
-                    cl -= 1
-                if not flag:
-                    while m == int(argv[1]) - 1 and j > 1:
-                        j -= 1
-                        m = arr1[-1][1]
-                        arr1.pop()
-                    if m == int(argv[1]) - 1 and j == 1:
-                        break
-                    continue
-                arr1.append([j, m])
-                m = -1
-            j += 1
-        if (len(arr1) == int(argv[1])):
-            arr.append(arr1)
+    arr1 = []
+    length = int(argv[1])
+    row(0, arr1, arr, length)
     for w in range(len(arr)):
         print(arr[w])
+
+
+def row(rw, arr1, arr, length):
+    if rw == length and len(arr1) == length:
+        arr.append(arr1.copy())
+        return
+    for j in range(length):
+        if valid(arr1, rw, j):
+            arr1.append([rw, j])
+            row(rw + 1, arr1, arr, length)
+            arr1.pop()
+
+
+def valid(arr1, j, m):
+    cl = j
+    k = m
+    flag = True
+    while cl > 0 and k > 0:
+        for w in range(len(arr1)):
+            if arr1[w][0] == cl - 1 and arr1[w][1] == k - 1:
+                flag = False
+                break
+        if not flag:
+            return 0
+        k -= 1
+        cl -= 1
+    k = m
+    cl = j
+    while cl > 0 and k < int(argv[1]):
+        for w in range(len(arr1)):
+            if arr1[w][0] == cl - 1 and arr1[w][1] == k + 1:
+                flag = False
+                break
+        if not flag:
+            return 0
+        k += 1
+        cl -= 1
+    k = m
+    cl = j
+    while cl > 0:
+        for w in range(len(arr1)):
+            if arr1[w][0] == cl - 1 and arr1[w][1] == m:
+                flag = False
+                return 0
+        if not flag:
+            break
+        cl -= 1
+    return 1
 
 
 if __name__ == "__main__":
