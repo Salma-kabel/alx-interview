@@ -27,7 +27,7 @@ def main():
 
 
 def row(rw, arr1, arr, length):
-    if rw == length and len(arr1) == length:
+    if rw == length:
         arr.append(arr1.copy())
         return
     for j in range(length):
