@@ -10,7 +10,7 @@ def makeChange(coins, total):
     s_list = sorted(coins, reverse=True)
     coin = 0
     for val in s_list:
-        if val < total:
+        if val =< total:
             num = int(total) / int(val)
             coin = coin + int(num)
             total = total - int(num) * val
