@@ -30,7 +30,7 @@ def isWinner(x, nums):
         if turn == 0:
             ben += 1
         else:
-            maria += 0
+            maria += 1
     if maria > ben:
         return "Maria"
     if ben > maria:
