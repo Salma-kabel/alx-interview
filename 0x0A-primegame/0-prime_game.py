@@ -7,6 +7,7 @@ def isWinner(x, nums):
     removed = []
     winner = []
     for i in range(x):
+        removed.clear()
         turn = 0
         while(1):
             turn2 = turn
@@ -17,6 +18,7 @@ def isWinner(x, nums):
                         k = 2
                         while num * k <= nums[i]:
                             removed.append(num * k)
+                            k += 1
                         if turn == 0:
                             turn = 1
                         else:
@@ -43,6 +45,7 @@ def isWinner(x, nums):
         return None
 
 def isprime(num):
+    """determines if the number is prime"""
     if num > 1:
         for n in range(2, num):
             if (num % n) == 0:
