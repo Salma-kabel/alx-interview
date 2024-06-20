@@ -5,7 +5,6 @@
 def isWinner(x, nums):
     """determines the winner in the game"""
     removed = []
-    winner = []
     maria = 0
     ben = 0
     for i in range(x):
@@ -39,10 +38,11 @@ def isWinner(x, nums):
     else:
         return None
 
+
 def isprime(num):
     """determines if the number is prime"""
     if num > 1:
-        for n in range(2, num):
+        for n in range(2, int(num**0.5) + 1):
             if (num % n) == 0:
                 return False
         return True
