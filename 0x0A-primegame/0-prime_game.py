@@ -36,7 +36,7 @@ def isWinner(x, nums):
     if ben > maria:
         return "Ben"
     else:
-        return "None"
+        return None
 
 
 def isprime(num):
