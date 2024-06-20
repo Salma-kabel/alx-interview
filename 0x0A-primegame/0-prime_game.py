@@ -6,6 +6,8 @@ def isWinner(x, nums):
     """determines the winner in the game"""
     removed = []
     winner = []
+    maria = 0
+    ben = 0
     for i in range(x):
         removed.clear()
         turn = 0
@@ -27,16 +29,9 @@ def isWinner(x, nums):
             if turn == turn2:
                 break
         if turn == 0:
-            winner.append(1)
-        else:
-            winner.append(0)
-    maria = 0
-    ben = 1
-    for i in range(len(winner)):
-        if winner[i] == 0:
-            maria += 1
-        else:
             ben += 1
+        else:
+            maria += 0
     if maria > ben:
         return "Maria"
     if ben > maria:
