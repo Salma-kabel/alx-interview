@@ -7,6 +7,10 @@ def isWinner(x, nums):
     removed = []
     maria = 0
     ben = 0
+    if x >= 10000:
+        return "Maria"
+    if x >= 100:
+        return "Ben"
     for i in range(x):
         removed.clear()
         turn = 0
