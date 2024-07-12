@@ -7,11 +7,11 @@ def canUnlockAll(boxes):
     if not boxes or type(boxes) is not list:
         return False
 
-    unlocked = [0]
-    for n in unlocked:
-        for key in boxes[n]:
-            if key not in unlocked and key < len(boxes):
-                unlocked.append(key)
-    if len(unlocked) == len(boxes):
+    opened = [0]
+    for element in opened:
+        for box in boxes[n]:
+            if box not in opened and box < len(boxes):
+                opened.append(box)
+    if len(opened) == len(boxes):
         return True
     return False
