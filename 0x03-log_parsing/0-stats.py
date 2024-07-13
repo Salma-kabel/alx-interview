@@ -1,15 +1,20 @@
 #!/usr/bin/python3
 """ Script that reads stdin line by line """
 
+
 import sys
 
+
 def print_stats(stats: dict, file_size: int) -> None:
+    """print stats of files"""
     print("File size: {:d}".format(file_size))
     for k, v in sorted(stats.items()):
         if v:
             print("{}: {}".format(k, v))
 
+
 def process_input():
+    """parse stdin line by line and computes metrics"""
     filesize, count = 0, 0
     codes = ["200", "301", "400", "401", "403", "404", "405", "500"]
     stats = {k: 0 for k in codes}
@@ -35,6 +40,6 @@ def process_input():
         print_stats(stats, filesize)
         raise
 
+
 if __name__ == "__main__":
     process_input()
-
