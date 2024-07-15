@@ -5,28 +5,28 @@
 import sys
 
 
-def print_stats(stats: dict, file_size: int) -> None:
+def print_stats(stats: dict, filesize: int) -> None:
     """print stats of files"""
-    print("File size: {:d}".format(file_size))
-    for k, v in sorted(stats.items()):
-        if v:
-            print("{}: {}".format(k, v))
+    print("File size: {:d}".format(filesize))
+    for key, value in sorted(stats.items()):
+        if value:
+            print("{}: {}".format(key, value))
 
 
-def process_input():
+def processinput():
     """parse stdin line by line and computes metrics"""
     filesize, count = 0, 0
-    codes = ["200", "301", "400", "401", "403", "404", "405", "500"]
-    stats = {k: 0 for k in codes}
+    code = ["200", "301", "400", "401", "403", "404", "405", "500"]
+    stats = {key: 0 for key in code}
 
     try:
         for line in sys.stdin:
             count += 1
             data = line.split()
             try:
-                status_code = data[-2]
-                if status_code in stats:
-                    stats[status_code] += 1
+                statuscode = data[-2]
+                if statuscode in stats:
+                    stats[statuscode] += 1
             except BaseException:
                 pass
             try:
@@ -34,12 +34,12 @@ def process_input():
             except BaseException:
                 pass
             if count % 10 == 0:
-                print_stats(stats, filesize)
-        print_stats(stats, filesize)
+                pstats(stats, filesize)
+        pstats(stats, filesize)
     except KeyboardInterrupt:
-        print_stats(stats, filesize)
+        pstats(stats, filesize)
         raise
 
 
 if __name__ == "__main__":
-    process_input()
+    processinput()
