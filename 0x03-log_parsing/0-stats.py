@@ -5,7 +5,7 @@
 import sys
 
 
-def print_stats(stats: dict, filesize: int) -> None:
+def pstats(stats: dict, filesize: int) -> None:
     """print stats of files"""
     print("File size: {:d}".format(filesize))
     for key, value in sorted(stats.items()):
